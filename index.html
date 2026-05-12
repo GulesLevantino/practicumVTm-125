@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ВКР | Интеллектуальная система техподдержки</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <h1>Интеллектуальная веб-система автоматической обработки обращений в техническую поддержку</h1>
+    <p class="subtitle">Выпускная квалификационная работа | ВлГУ, ИИТЭ, кафедра ВТиСУ</p>
+  </div>
+</div>
+
+<main class="container">
+  <!-- Актуальность -->
+  <section>
+    <h2><i class="fas fa-chart-line"></i> Актуальность: почему автоматизация неизбежна?</h2>
+    <p class="lead"><strong>Предисловие.</strong> Рост обращений в техподдержку составляет 20–30% ежегодно. При ручной обработке свыше 10 000 заявок время реакции превышает 2 часа, конверсия в ремонт не выше 40%. Простой оборудования — до 100 000 руб./час, зарплата оператора — 40–50 тыс. руб./мес. Готовые боты не выделяют сущности («дисплей Apple») и не рассчитывают стоимость. <strong>Создание собственной интеллектуальной системы — экономически обоснованная необходимость.</strong></p>
+    <div class="grid-2">
+      <div class="card">
+        <i class="fas fa-chart-simple fa-2x"></i><i class="fas fa-arrow-up fa-2x up-arrow"></i>
+        <h3>Рост обращений +20–30% ежегодно</h3>
+        <p>10 000+ заявок → очереди, ошибки. Простой: до 100 тыс. руб./час.</p>
+        <div class="mock-chart"><canvas id="growthChart" style="height:180px;"></canvas><div class="badge">+30% за два года (оба канала)</div></div>
+      </div>
+      <div class="card">
+        <i class="fas fa-chart-pie fa-2x"></i>
+        <h3>Загрузка сервис-центра (2025)</h3>
+        <p>Операторы загружены на 85% рутинными операциями. Время на заявку ~12 мин.</p>
+        <div class="mock-chart"><canvas id="loadPieChart" style="height:160px; width:160px; margin:0 auto;"></canvas><div class="badge">Множество классификаторов увеличивает время</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Анализ NLP-моделей -->
+  <section>
+    <h2><i class="fas fa-microchip"></i> Анализ и выбор NLP-модели</h2>
+    <p>Исследованы RuBERT, LaBSE, GPT и Naive Bayes. Критерии: точность (F1), качество NER, скорость, стоимость.</p>
+    <div class="mock-chart"><canvas id="nlpBarChart" style="height:300px;"></canvas><div class="badge">Сравнение моделей по 4 критериям (баллы 1-10)</div></div>
+    <table class="compact-table">
+      <thead><tr><th>Модель</th><th>F1-мера</th><th>NER (1-10)</th><th>Скорость (с)</th><th>Стоимость</th><th>Вывод</th></tr></thead>
+      <tbody>
+        <tr><td><strong>RuBERT</strong></td><td>0.93</td><td>9</td><td>0.3 (GPU)</td><td>бесплатно</td><td style="color:#2c9ab3;">✅ Выбрана</td></tr>
+        <tr><td>LaBSE</td><td>0.87</td><td>2</td><td>0.4</td><td>бесплатно</td><td>❌</td></tr>
+        <tr><td>GPT (API)</td><td>0.91</td><td>6</td><td>1-2</td><td>дорого</td><td>❌</td></tr>
+        <tr><td>Naive Bayes</td><td>0.76</td><td>1</td><td>0.01</td><td>бесплатно</td><td>❌</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Выбор технологического стека (Font Awesome иконки) -->
+  <section>
+    <h2><i class="fas fa-cogs"></i> Выбор технологического стека</h2>
+    <h3>Языки программирования</h3>
+    <div class="grid-3">
+      <div class="card">
+        <i class="fab fa-python fa-2x" style="color:#2c9ab3;"></i>
+        <h3>Python <span class="badge">✓ выбран</span></h3>
+        <p>HuggingFace, PyTorch. Инференс RuBERT – 4 строки.</p>
+      </div>
+      <div class="card">
+        <i class="fab fa-java fa-2x" style="opacity:0.5; color:#666;"></i>
+        <h3>Java <span class="badge red">❌</span></h3>
+        <p>Нет готовых русских BERT-моделей.</p>
+      </div>
+      <div class="card">
+        <i class="fab fa-golang fa-2x" style="opacity:0.5; color:#666;"></i>
+        <h3>Go <span class="badge red">❌</span></h3>
+        <p>Экосистема NLP отсутствует.</p>
+      </div>
+      <div class="card">
+        <i class="fab fa-node-js fa-2x" style="opacity:0.5; color:#666;"></i>
+        <h3>Node.js <span class="badge red">❌</span></h3>
+        <p>TensorFlow.js не поддерживает BERT.</p>
+      </div>
+    </div>
+    <div class="mock-chart"><canvas id="langCompareChart" style="height:240px;"></canvas><div class="badge">Оценка языков по 5 критериям (1-10)</div></div>
+
+    <h3>Системы управления базами данных</h3>
+    <div class="grid-3">
+      <div class="card">
+        <i class="fas fa-database fa-2x" style="color:#2c9ab3;"></i>
+        <h3>PostgreSQL <span class="badge">✓ выбран</span></h3>
+        <p>ACID, внешние ключи, JSONB.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-leaf fa-2x" style="opacity:0.5; color:#666;"></i>
+        <h3>MongoDB <span class="badge red">❌</span></h3>
+        <p>Нет внешних ключей, слабые JOIN.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-hdd fa-2x" style="opacity:0.5; color:#666;"></i>
+        <h3>SQLite <span class="badge red">❌</span></h3>
+        <p>Плохая конкурентность.</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-database fa-2x" style="opacity:0.5; color:#666;"></i>
+        <h3>MsSQL <span class="badge red">❌</span></h3>
+        <p>Закрытая экосистема, высокая стоимость.</p>
+      </div>
+    </div>
+    <div class="db-radar-container"><div class="mock-chart"><canvas id="dbRadarChart" style="height:160px;"></canvas><div class="badge">Оценка СУБД по 5 критериям</div></div></div>
+  </section>
+
+  <!-- ER-диаграмма -->
+  <section>
+    <h2><i class="fas fa-diagram-project"></i> Логическая схема БД</h2>
+    <p>Основные сущности: <code>tickets</code>, <code>spare_parts</code>, <code>employees</code>, <code>assignments</code>. Внешние ключи гарантируют целостность.</p>
+    <div class="img-card"><img src="1.png" alt="ER-диаграмма"><p class="badge">Таблицы: suppliers, estimates, categories, departments, tickets, messages, assignments, users</p></div>
+  </section>
+
+  <!-- Бизнес-процессы -->
+  <section>
+    <h2><i class="fas fa-chalkboard-user"></i> Моделирование бизнес-процесса</h2>
+    <p>Сравнение "как было" (ручная обработка) и "как стало" (интеллектуальная система).</p>
+    <div class="process-row">
+      <div class="process-col">
+        <h3><i class="fas fa-hourglass-half"></i> «Как было»</h3>
+        <div class="img-card"><img src="3.png" alt="Как было"></div>
+        <div class="process-explanation"><strong>Узкие места:</strong> оператор тратит 5-15 мин на классификацию, очередь часами, повторное описание, ручной поиск запчастей. → время >2 ч, конверсия 40%.</div>
+      </div>
+      <div class="process-col">
+        <h3><i class="fas fa-robot"></i> «Как стало»</h3>
+        <div class="img-card"><img src="4.png" alt="Как стало"></div>
+        <div class="process-explanation"><strong>Улучшения:</strong> RuBERT за 0.3 с, NER, автоподбор запчастей, умное распределение. → время 10-20 с, конверсия 65%.</div>
+      </div>
+    </div>
+    <div class="mock-chart"><i class="fas fa-stopwatch"></i> <strong>Ускорение:</strong> с 2 часов до 20 секунд (в 360 раз быстрее).</div>
+  </section>
+
+  <!-- Экономика -->
+  <section>
+    <h2><i class="fas fa-chart-pie"></i> Экономическая эффективность</h2>
+    <p>10 000 обращений/год, средний чек 5 000 руб. До: ФОТ 1,2 млн руб. После: поддержка 200 тыс. руб. Конверсия: 40% → 65%.</p>
+    <div class="formula-block">📐 <strong>Экономия на персонале:</strong> (1 200 000 – 200 000) / 1 200 000 × 100% = <strong>83,3%</strong></div>
+    <div class="formula-block">📐 <strong>Дополнительная выручка:</strong> 10 000 × 0,25 × 5 000 = <strong>12 500 000 руб./год</strong></div>
+    <div class="metric-big"><span><i class="fas fa-coins"></i> Годовой эффект:</span><span class="big-number">13 500 000 ₽</span></div>
+    <div class="formula-block">📐 <strong>Срок окупаемости (PP):</strong> 800 000 / (13 500 000 / 12) = <strong>0,71 мес.</strong></div>
+    <div class="mock-chart"><canvas id="cashFlowChart" style="height:200px;"></canvas><div class="badge">Накопленный денежный поток (тыс. руб.)</div></div>
+  </section>
+
+  <!-- Демонстрация кода -->
+  <section>
+    <h2><i class="fas fa-code"></i> Демонстрация кода (Python + FastAPI + RuBERT)</h2>
+    <pre><code>from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+
+model_name = "DeepPavlov/rubert-base-cased-sentence"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained("./finetuned_rubert")
+
+def analyze_ticket(text):
+    inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True)
+    with torch.no_grad():
+        logits = model(**inputs).logits
+    category = torch.argmax(logits).item()
+    entities = extract_entities(text)   # NER-модуль
+    return {"category": ["hardware","software"][category], "entities": entities}
+
+from fastapi import FastAPI
+app = FastAPI()
+
+@app.post("/api/analyze")
+async def analyze(request: dict):
+    result = analyze_ticket(request["text"])
+    # сохранение в PostgreSQL
+    await conn.execute("INSERT INTO tickets ...")
+    return result</code></pre>
+    <div class="code-explanation"><strong>Пояснение:</strong> Пример: "Ноутбук ASUS не включается" → category: hardware, entities: {brand: ASUS}. Смета подбирается автоматически.</div>
+  </section>
+
+  <!-- Заключение -->
+  <section>
+    <h2><i class="fas fa-clipboard-check"></i> Заключение и перспективы</h2>
+    <p><strong>Научная новизна:</strong> впервые предложена полностью автономная система на базе RuBERT для техподдержки с модулем подбора запчастей и маршрутизацией.</p>
+    <p><strong>Практическая значимость:</strong> ускорение в 360 раз, экономия 83%, окупаемость < 1 месяца, рост конверсии до 65%.</p>
+    <p><strong>Перспективы:</strong> генеративные модели, мультиязычность, интеграция с CRM, дашборды аналитики.</p>
+    <div class="img-card"><i class="fas fa-microchip"></i> Выпускная квалификационная работа – Владимирский государственный университет, 2026</div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 | ст. гр. ВТм-125 Ле Ши Зя Бао | Интеллектуальная веб-система техподдержки</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
